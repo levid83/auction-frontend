@@ -1,8 +1,8 @@
 ## The Auction House - demo project
 
-This front-end application for the [Auction House With Serverless Microservices](https://github.com/levid83/auction-serverless-microservices) demo project.
+This is a front-end application for the [Auction House With Serverless Microservices](https://github.com/levid83/auction-serverless-microservices) demo project.
 
-## Cloning and installing
+## Setup
 
 Clone this repository.
 
@@ -17,7 +17,7 @@ Install the NPM dependencies for this project.
 npm install
 ```
 
-## Setting up variables
+## Variables
 
 Create a `.env` file in the root folder of this project (see [.env.example](.env.example)). You need to specify 4 variables:
 
