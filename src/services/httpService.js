@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class HttpService {
-  constructor(token = "", baseURL = process.env.REACT_APP_BASE_URL) {
+  constructor(token = "", baseURL = process.env.REACT_APP_AUCTIONS_ENDPOINT) {
     this.token = token;
     this.baseURL = baseURL;
   }
