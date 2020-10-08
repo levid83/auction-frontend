@@ -23,7 +23,7 @@ Create a `.env` file in the root folder of this project (see [.env.example](.env
 
 - `REACT_APP_REFRESH_RATE`: The rate at which auctions will be fetched (in milliseconds)
 
-- `REACT_APP_AUCTIONS_ENDPOINT`: Your Auction Service API endpoint.
+- `REACT_APP_AUCTIONS_ENDPOINT`: Your Auction Service API endpoint (under `AWS ->CloudFormation->Stacks-> ${AUCTION_SERVICE_STACK_NAME}->Outputs->ServiceEndpoint`)
 
 - `REACT_APP_AUTH0_DOMAIN`: Your Auth0 application domain.
 
