@@ -47,7 +47,7 @@ const CreateAuctionPage = () => {
             id="standard-adornment-amount"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Example: Lemonade from the '60s"
+            placeholder="The name of the auction item"
             type="string"
             variant="outlined"
           />
