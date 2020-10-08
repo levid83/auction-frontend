@@ -25,9 +25,9 @@ Create a `.env` file in the root folder of this project (see [.env.example](.env
 
 - `REACT_APP_AUCTIONS_ENDPOINT`: Your Auction Service API endpoint (under `AWS ->CloudFormation->Stacks-> ${AUCTION_SERVICE_STACK_NAME}->Outputs->ServiceEndpoint`)
 
-- `REACT_APP_AUTH0_DOMAIN`: Your Auth0 application domain.
+- `REACT_APP_AUTH0_DOMAIN`: Your Auth0 application domain.  (under `Auth0.com->applications->${YOUR_APP_NAME}->settings`)
 
-- `REACT_APP_AUTH0_CLIENT_ID`: Your Auth0 application client ID.
+- `REACT_APP_AUTH0_CLIENT_ID`: Your Auth0 application client ID. (under `Auth0.com->applications->${YOUR_APP_NAME}->settings`)
 
 ## Running the application
 
