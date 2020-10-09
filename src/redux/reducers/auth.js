@@ -1,4 +1,4 @@
-import { SET_TOKEN, SET_CLAIMS, SET_AUTH } from "../actions/types";
+import { SET_TOKEN, SET_CLAIMS } from "../actions/types";
 
 const initialState = {
   token: null,
@@ -15,13 +15,6 @@ export default function (state = initialState, action) {
         ...state,
         claims: action.payload.claims,
         email: action.payload.email,
-      };
-    case SET_AUTH:
-      return {
-        ...state,
-        claims: action.payload.claims,
-        email: action.payload.email,
-        token: action.payload.token,
       };
     default:
       return state;

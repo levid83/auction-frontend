@@ -1,20 +1,31 @@
 import {
-  GET_AUCTIONS,
-  PLACE_BID,
+  GET_AUCTIONS_REQUEST,
+  GET_AUCTIONS_RESPONSE,
+  GET_AUCTIONS_ERROR,
+  CREATE_AUCTIONS_REQUEST,
+  CREATE_AUCTIONS_RESPONSE,
+  CREATE_AUCTIONS_ERROR,
+  PLACE_BID_REQUEST,
+  PLACE_BID_RESPONSE,
+  PLACE_BID_ERROR,
   SET_BIDDING_ON,
   RESET_BIDDING_ON,
-  CREATE_AUCTION,
   SET_BID_AMOUNT,
+  AUCTION_ERROR,
 } from "../actions/types";
+
+import errorReducer from "./error";
 const initialState = {
   auctions: null,
   biddingOn: null,
   bidAmount: 0,
+  error: false,
 };
 export default function (state = initialState, action) {
-  switch (action.type) {
-    case GET_AUCTIONS:
-      const auctions = action.payload;
+  const { type, payload } = action;
+  switch (type) {
+    case GET_AUCTIONS_RESPONSE:
+      const auctions = payload;
       let bidAmount = state.bidAmount;
       if (state.biddingOn) {
         auctions.forEach((auction) => {
@@ -24,28 +35,40 @@ export default function (state = initialState, action) {
         });
       }
       return { ...state, auctions, bidAmount };
-    case CREATE_AUCTION:
-      return { ...state };
+
+    case GET_AUCTIONS_REQUEST:
+    case CREATE_AUCTIONS_REQUEST:
+    case PLACE_BID_REQUEST:
+      return state;
+
+    case PLACE_BID_RESPONSE:
+    case CREATE_AUCTIONS_RESPONSE:
+    case GET_AUCTIONS_ERROR:
+    case CREATE_AUCTIONS_ERROR:
+    case PLACE_BID_ERROR:
+      return { ...errorReducer(state, action) };
 
     case SET_BIDDING_ON:
       return {
         ...state,
-        biddingOn: action.payload,
-        bidAmount: action.payload ? action.payload.highestBid.amount + 1 : 0,
+        biddingOn: payload,
+        bidAmount: payload ? payload.highestBid.amount + 1 : 0,
       };
+
     case RESET_BIDDING_ON:
       return {
         ...state,
         biddingOn: null,
         bidAmount: 0,
       };
+
     case SET_BID_AMOUNT:
       return {
         ...state,
-        bidAmount: action.payload,
+        bidAmount: payload,
       };
-    case PLACE_BID:
-      return { ...state };
+    case AUCTION_ERROR:
+      return { ...state, error: false };
     default:
       return state;
   }
