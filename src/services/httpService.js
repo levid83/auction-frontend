@@ -8,33 +8,36 @@ export default class HttpService {
 
   async get(endpoint, options = {}, noAuth = false) {
     try {
-      return axios.get(`${this.baseURL}/${endpoint}`, {
+      const response = await axios.get(`${this.baseURL}/${endpoint}`, {
         ...options,
         ...(noAuth ? {} : this._getAuthHeader()),
       });
+      return response.data;
     } catch (error) {
-      this._handleHttpError(error);
+      throw new Error(error.response.data);
     }
   }
 
   async post(endpoint, data = {}, options = {}, noAuth = false) {
     try {
-      return axios.post(`${this.baseURL}/${endpoint}`, data, {
+      const response = await axios.post(`${this.baseURL}/${endpoint}`, data, {
         ...options,
         ...(noAuth ? {} : this._getAuthHeader()),
       });
+      return response.data;
     } catch (error) {
-      this._handleHttpError(error);
+      throw new Error(error.response.data);
     }
   }
   async patch(endpoint, data = {}, options = {}, noAuth = false) {
     try {
-      return axios.patch(`${this.baseURL}/${endpoint}`, data, {
+      const response = await axios.patch(`${this.baseURL}/${endpoint}`, data, {
         ...options,
         ...(noAuth ? {} : this._getAuthHeader()),
       });
+      return response.data;
     } catch (error) {
-      this._handleHttpError(error);
+      throw new Error(error.response.data);
     }
   }
 
