@@ -7,7 +7,7 @@ export default class AuctionService extends HttpService {
   async createAuction(title, pictureBase64) {
     const createAuctionResult = await this.post("auction", { title });
     await this.patch(
-      `auction/${createAuctionResult.data.id}/picture`,
+      `auction/${createAuctionResult.id}/picture`,
       pictureBase64
     );
   }

@@ -108,7 +108,7 @@ const Auction = ({ auction, onBid, bidState }) => {
             <Button disabled={true} onClick={() => onBid()}>
               {bidState === "OWN_AUCTION"
                 ? "This is your auction"
-                : "You are the highest bidder"}
+                : "You have the highest bid for this item"}
             </Button>
           )}
 
