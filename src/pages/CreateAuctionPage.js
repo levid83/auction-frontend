@@ -13,6 +13,8 @@ import {
 } from "@material-ui/core";
 import PictureUpload from "../components/PictureUpload";
 
+import AuctionErrorMessage from "../components/AuctionErrorMessage";
+
 const useStyles = makeStyles((theme) => ({
   form: {
     maxWidth: 400,
@@ -33,7 +35,9 @@ const CreateAuctionPage = () => {
   const classes = useStyles();
 
   const submitAuction = async (title) => {
-    dispatch(createAuction(title, base64)).then(history.push("/auctions"));
+    dispatch(createAuction(title, base64)).then(
+      (res) => res && history.push("/")
+    );
   };
 
   return (
@@ -64,6 +68,7 @@ const CreateAuctionPage = () => {
           </Button>
         </div>
       </form>
+      <AuctionErrorMessage />
     </Container>
   );
 };

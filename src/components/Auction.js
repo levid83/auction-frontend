@@ -33,11 +33,11 @@ const useStyles = makeStyles({
   },
   detailsContainer: {
     display: "flex",
-    padding: 0,
+    flexDirection: "column",
+    alignItems: "space-around",
   },
   details: {
     display: "flex",
-    flexBasis: "50%",
     justifyContent: "center",
     alignItems: "center",
     paddingTop: 18,

@@ -4,6 +4,8 @@ import { useHistory } from "react-router";
 
 import { getAuctions, setBiddingOn } from "../redux/actions/auctionActions";
 
+import AuctionErrorMessage from "../components/AuctionErrorMessage";
+
 import Auction from "../components/Auction";
 import BidModal from "../components/BidModal";
 
@@ -26,8 +28,9 @@ const useStyles = makeStyles({
     },
   },
   auctionCard: {
-    flexBasis: cardWidth,
-    flexShrink: 0,
+    flexBasis: "auto",
+    maxWidth: cardWidth,
+    minWidth: "330px",
     padding: cardPadding,
   },
   fabContainer: {
@@ -112,6 +115,7 @@ const AuctionsPage = () => {
           <AddIcon />
         </Fab>
       </div>
+      <AuctionErrorMessage />
     </div>
   );
 };
