@@ -15,7 +15,6 @@ provider:
 plugins:
   - serverless-dotenv-plugin
   - serverless-finch
-  - serverless-domain-manager
 
 custom:
   dotenv:
