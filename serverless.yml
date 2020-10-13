@@ -1,0 +1,31 @@
+service: frontend
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${env:AWS_REGION_ID}
+  iamRoleStatements:
+    - FrontendBucketIAM:
+        Effect: Allow
+        Action:
+          - s3:GetObject
+        Resource: arn:aws:s3:::${self:custom.client.bucketName}/*
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-finch
+  - serverless-domain-manager
+
+custom:
+  dotenv:
+    path: ./.env
+    logging: false
+    include:
+      - AWS_ACCOUNT_ID
+      - AWS_REGION_ID
+  client:
+    bucketName: auction-frontend-gtrkvl${env:AWS_ACCOUNT_ID}-${self:provider.stage}
+    distributionFolder: ./build
+    indexDocument: index.html
+    errorDocument: index.html
